@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_graphiql',
 
     'profiles',
+    'pastes',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -108,3 +109,5 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+MAX_PASTE_CONTENT = '5242880'
