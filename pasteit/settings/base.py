@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'graphene.contrib.django',
+
+    'django_graphiql',
+
     'profiles',
 ]
 
