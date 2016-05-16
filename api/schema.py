@@ -1,12 +1,22 @@
 import graphene
 
 import profiles.schema
+import pastes.schema
+
+from profiles.schema import UserNode, ProfileNode
+from pastes.schema import PasteNode
 
 from graphene.contrib.django.debug import DjangoDebugPlugin
 
 
-class Query(profiles.schema.Query):
+class Query(profiles.schema.Query, pastes.schema.Query):
     pass
 
+
 schema = graphene.Schema(name='Pasteit API', plugins=[DjangoDebugPlugin()])
+
+schema.register(UserNode)
+schema.register(PasteNode)
+schema.register(ProfileNode)
+
 schema.query = Query
