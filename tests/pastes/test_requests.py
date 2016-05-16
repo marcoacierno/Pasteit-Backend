@@ -138,3 +138,48 @@ class TestGraphQLPastesRequest(TestCase):
             result.data['pastes']['edges'][0]['node']['owner']['user']['username'] ==
             paste.owner.user.username
         )
+
+    def test_pastes_are_ordered_by_modified(self):
+        p1 = PasteFactory(visibility='public')
+        p2 = PasteFactory(visibility='public')
+
+        query = '''
+            query {
+                pastes {
+                    edges {
+                        node {
+                            name
+                        }
+                    }
+                }
+            }
+'''
+
+        result = schema.execute(query)
+        assert not result.errors
+
+        fs = sorted([p1, p2], key=sortByModified)
+        fs.reverse()
+
+        s = sorted(fs, key=sortByCreated)
+        s.reverse()
+
+        assert {
+            'node': {
+                'name': s[0].name,
+            },
+        } == result.data['pastes']['edges'][0]
+
+        assert {
+            'node': {
+                'name': s[1].name,
+            },
+        } == result.data['pastes']['edges'][1]
+
+
+def sortByCreated(obj):
+    return obj.created
+
+
+def sortByModified(obj):
+    return obj.modified
