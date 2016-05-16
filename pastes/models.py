@@ -5,6 +5,12 @@ from hashids import Hashids
 
 
 class Paste(models.Model):
+    VISIBILITY = (
+        ('public', 'Public'),
+        ('unlisted', 'Unlisted'),
+        ('private', 'Private'),
+    )
+
     name = models.CharField(max_length=128)
     owner = models.ForeignKey('profiles.Profile', related_name='pastes')
     # TODO: Reduce max_length
@@ -12,6 +18,8 @@ class Paste(models.Model):
 
     created = models.DateTimeField(help_text=_('Created'), auto_now_add=True, )
     modified = models.DateTimeField(help_text=_('Modified'), auto_now=True, )
+
+    visibility = models.CharField(choices=VISIBILITY, max_length=10)
 
     content = models.TextField(max_length=settings.MAX_PASTE_CONTENT)
 
