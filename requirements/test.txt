@@ -1,1 +1,4 @@
 -r base.txt
+
+factory_boy==2.7.0
+fuzzy_utils==1.6
