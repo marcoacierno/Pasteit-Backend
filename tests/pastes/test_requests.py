@@ -122,9 +122,7 @@ class TestGraphQLPastesRequest(TestCase):
                         node {
                             name
                             owner {
-                                user {
-                                    username
-                                }
+                                username
                             }
                         }
                     }
@@ -135,8 +133,8 @@ class TestGraphQLPastesRequest(TestCase):
         result = schema.execute(query)
         assert not result.errors
         assert (
-            result.data['pastes']['edges'][0]['node']['owner']['user']['username'] ==
-            paste.owner.user.username
+            result.data['pastes']['edges'][0]['node']['owner']['username'] ==
+            paste.owner.username
         )
 
     def test_pastes_are_ordered_by_modified(self):

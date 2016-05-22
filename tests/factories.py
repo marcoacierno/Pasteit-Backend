@@ -50,6 +50,6 @@ class PasteFactory(django.DjangoModelFactory):
         model = Paste
 
     name = fuzzy.FuzzyText()
-    owner = factory.SubFactory(ProfileFactory)
+    owner = factory.SubFactory(UserFactory)
     visibility = fuzzy.FuzzyChoice(choices=VISIBILITY_CHOICES)
     content = fuzzy.FuzzyText()

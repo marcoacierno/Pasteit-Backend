@@ -56,7 +56,7 @@ class TestGraphQLUsersQuery(TestCase):
         assert data['errors'][0]['message'] == 'You cannot query yourself if you are not logged'
 
     def test_get_user_pastes(self):
-        paste = PasteFactory(owner=self.user.profile)
+        paste = PasteFactory(owner=self.user)
 
         query = '''
             query {
