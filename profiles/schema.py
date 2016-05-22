@@ -6,23 +6,13 @@ from graphene import relay, with_context
 
 from graphene.contrib.django import DjangoNode
 
-from .models import Profile
-
-
-class ProfileNode(DjangoNode):
-    node = relay.NodeField()
-    user = graphene.Field('UserNode')
-
-    class Meta:
-        model = Profile
-
 
 class UserNode(DjangoNode):
     pastes = relay.ConnectionField('PasteNode')
     node = relay.NodeField()
 
     def resolve_pastes(self, args, info):
-        return self.profile.pastes.all()
+        return self.pastes.all()
 
     class Meta:
         model = get_user_model()

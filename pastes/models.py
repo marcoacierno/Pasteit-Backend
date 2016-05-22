@@ -12,7 +12,7 @@ class Paste(models.Model):
     )
 
     name = models.CharField(max_length=128)
-    owner = models.ForeignKey('profiles.Profile', related_name='pastes')
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='pastes')
     # TODO: Reduce max_length
     hash_id = models.CharField(max_length=128, unique=True, blank=True, )
 

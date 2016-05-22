@@ -10,7 +10,7 @@ from .models import Paste
 
 class PasteNode(DjangoNode):
     node = relay.NodeField()
-    owner = graphene.Field('ProfileNode')
+    owner = graphene.Field('UserNode')
     visibility = graphene.String()
 
     class Meta:

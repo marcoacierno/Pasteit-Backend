@@ -3,7 +3,7 @@ import graphene
 import profiles.schema
 import pastes.schema
 
-from profiles.schema import UserNode, ProfileNode
+from profiles.schema import UserNode
 from pastes.schema import PasteNode
 
 
@@ -15,6 +15,5 @@ schema = graphene.Schema(name='Pasteit API')
 
 schema.register(UserNode)
 schema.register(PasteNode)
-schema.register(ProfileNode)
 
 schema.query = Query
