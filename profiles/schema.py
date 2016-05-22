@@ -16,7 +16,7 @@ class UserNode(DjangoNode):
 
     class Meta:
         model = get_user_model()
-        exclude_fields = ('is_staff', 'is_superuser', 'password', 'is_active')
+        exclude_fields = ('is_staff', 'is_superuser', 'password', 'is_active', 'user')
 
 
 class Query(graphene.ObjectType):
