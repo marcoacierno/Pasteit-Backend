@@ -19,7 +19,6 @@ class ProfileNode(DjangoNode):
 
 class UserNode(DjangoNode):
     pastes = relay.ConnectionField('PasteNode')
-    profile = relay.NodeField('ProfileNode')
     node = relay.NodeField()
 
     def resolve_pastes(self, args, info):

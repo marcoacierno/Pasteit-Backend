@@ -7,6 +7,6 @@ from .schema import schema
 
 
 urlpatterns = [
-    url(r'^graphql', csrf_exempt(GraphQLView.as_view(schema=schema))),
+    url(r'^graphql', csrf_exempt(GraphQLView.as_view(schema=schema)), name='graphql'),
     url(r'^graphiql', include('django_graphiql.urls')),
 ]
