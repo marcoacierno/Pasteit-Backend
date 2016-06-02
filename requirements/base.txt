@@ -6,4 +6,5 @@ django_graphiql==0.4.4
 hashids==1.1.0
 django-filter==0.13.0
 pytz==2016.4
+django-cors-headers==1.1.0
 
