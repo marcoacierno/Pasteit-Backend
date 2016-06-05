@@ -28,7 +28,8 @@ class Query(graphene.ObjectType):
         me = context.user
 
         if me.is_anonymous() is True:
-            raise ValueError('You cannot query yourself if you are not logged')
+            return None
+            # raise ValueError('You cannot query yourself if you are not logged')
 
         return me
 
