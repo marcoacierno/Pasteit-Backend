@@ -1,5 +1,3 @@
-import pytest
-
 from django.test import TestCase, Client
 
 from tests.factories import UserFactory, PasteFactory
