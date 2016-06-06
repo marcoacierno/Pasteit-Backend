@@ -4,10 +4,14 @@ import profiles.schema
 import pastes.schema
 
 from profiles.schema import UserNode
-from pastes.schema import PasteNode
+from pastes.nodes import PasteNode
 
 
 class Query(profiles.schema.Query, pastes.schema.Query):
+    pass
+
+
+class Mutations(pastes.schema.Mutation):
     pass
 
 
@@ -17,3 +21,4 @@ schema.register(UserNode)
 schema.register(PasteNode)
 
 schema.query = Query
+schema.mutation = Mutations
