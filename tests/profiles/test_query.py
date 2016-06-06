@@ -48,7 +48,7 @@ class TestGraphQLUsersQuery(TestCase):
         # TODO: We should return 400
         assert response.status_code == 200
 
-        data = response.json()
+        data = response.json()['data']
 
         assert data['me'] is None
 
